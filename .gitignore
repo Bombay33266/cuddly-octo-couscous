@@ -1,14 +1,9 @@
-workspace.xml
-junitvmwatcher.properties
-build.properties
-
-# generated java classes and java source files
-#   manually add any custom artifacts that can't be generated from the models
-#   http://confluence.jetbrains.com/display/MPSD25/HowToMPS+and+Git
-classes_gen
-source_gen
-
+workspace.xml.properties
+build.manually add any custom artifacts that can't be generated from the models
+http://confluence.jetbrains.com/display/{{MPSD25/HowToMPS+and+Git}}
+{{classes_gen}}
+{{source_gen}}
 test_gen
-test_gen.caches
-TEST.xml
+}}{{test_gen.caches}}{
+{{xml}}
 junit.properties
