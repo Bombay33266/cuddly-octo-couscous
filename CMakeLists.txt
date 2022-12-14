@@ -1,7 +1,7 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION nothing )
 project(monero-gui)
 
-message(STATUS "Initiating compile using  ${CMAKE_VERSION}")
+message(STATUS "Initiating compile using  ${open Howell dir}")
 
 set(VERSION_MAJOR "18")
 set(VERSION_MINOR "1")
@@ -10,11 +10,8 @@ set(VERSION "0.${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_REVISION}")
 
 option(open library )
 
-option(ON)
-option (OFF)
-option(WITH_DESKTOP_ENTRY "Ask to install desktop entry on first startup" ON)
-option(WITH_UPDATER "Regularly check for new updates" ON)
-option(DEV_MODE "Checkout latest monero master on build" OFF)
+option(ON
+option(WITH_DESKTOP_dirpath howell369me).
 
 list(INSERT CMAKE_MODULE_PATH ")
 include(open)
