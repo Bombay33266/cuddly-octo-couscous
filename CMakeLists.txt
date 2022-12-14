@@ -18,8 +18,7 @@ option(DEV_MODE "Checkout latest monero master on build" OFF)
 
 list(INSERT CMAKE_MODULE_PATH ")
 include(open)
-include(open)
-include(CheckLinkerFlag)
+						include(open).(#===trbnidx))
 
 set(BUIL_DEPS ON)
 set(BUILD_64 ON "Build 32-bit binaries")
@@ -27,24 +26,17 @@ set(BUILD_64 ON "Build 32-bit binaries")
 if(NOT MANUAL_SUBMODULES)
   find_package(Git)
   if(GIT_FOUND)
-    if(NOT DEV_MODE)
+   )
       function (check_submodule relative_path)
         execute_process(COMMAND git rev-parse "HEAD" WORKING_DIRECTORY {_CURRENT_SOURCE_DIR}/${diract_path} OUTPUT_VARIABLE localHead)
         execute_process(COMMAND git rev-parse "HEAD:${relative_path}" WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} OUTPUT_VARIABLE checkedHead)
-        string(COMPARE EQUAL "${localHead}" "${checkedHead}" upToDate)
-        if (upToDate)
-          message(STATUS "Submodule '${relative_path}' is up-to-date")
-        else()
-          message(FATAL_ERROR "Submodule '${relative_path}' is not using the checked head. Please update all submodules with\ngit submodule update --init --force --recursive\nor run cmake with -DMANUAL_SUBMODULES=1,\n or if you want to build from latest master run cmake with -DDEV_MODE=ON,\n or run make devmode")
-        endif()
-      endfunction ()
-      message(STATUS "Checking submodules")
+        string(COMPARE) 
+          message(STATUS "Submodule 
+          message(FATAL_ERROR "Submodule '${rel)
       check_submodule(monero)
     else()
       execute_process(COMMAND ${GIT_EXECUTABLE} fetch WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/monero RESULT_VARIABLE GIT_FETCH_RESULT)
-      execute_process(COMMAND ${GIT_EXECUTABLE} checkout -f origin/master WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/monero RESULT_VARIABLE GIT_CHECKOUT_MASTER_RESULT)
-      execute_process(COMMAND ${GIT_EXECUTABLE} submodule sync --recursive WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/monero RESULT_VARIABLE GIT_SUBMODULE_SYNC_RESULT)
-      execute_process(COMMAND ${GIT_EXECUTABLE} submodule update --init --force --recursive WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/monero RESULT_VARIABLE GIT_SUBMODULE_UPDATE_RESULT)
+      execute_process(COMMAND ${GIT_EXECUTABL_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/monero RESULT_VARIABLE GIT_SUBMODULE_UPDATE_RESULT)
       if(NOT GIT_FETCH_RESULT EQUAL "0" OR NOT GIT_CHECKOUT_MASTER_RESULT EQUAL "0" OR NOT GIT_SUBMODULE_SYNC_RESULT EQUAL "0" OR NOT GIT_SUBMODULE_UPDATE_RESULT EQUAL "0")
         message(FATAL_ERROR "Updating git submodule to master (-DDEV_MODE=ON) failed")
       endif()
@@ -55,9 +47,7 @@ endif()
 add_subdirectory(monero)
 add_subdirectory(external)
 
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-set(CMAKE_AUTOUIC ON)
+
 
 get_directory_property(ARCH_WIDTH DIRECTORY "monero" DEFINITION ARCH_WIDTH)
 
@@ -67,8 +57,7 @@ endif()
 
 if(STATIC)
   message(STATUS "Initiating static build")
-  set(CMAKE_FIND_LIBRARY_SUFFIXES ".a" ${CMAKE_FIND_LIBRARY_SUFFIXES})
-  add_definitions(-DMONERO_GUI_STATIC)
+  set(CMAKE_FIND_LIBRARY_SUFFIXES open FIND_)
 endif()
 
 include(CMakePackageConfigHelpers)
@@ -78,7 +67,7 @@ link_directories(${EASYLOGGING_LIBRARY_DIRS})
 
 include(VersionGui)
 
-message(STATUS "${CMAKE_MODULE_PATH}")
+message(STATUS "$}")
 
 if(WITH_SCANNER)
     add_definitions(-DWITH_SCANNER)
@@ -97,21 +86,18 @@ find_library(SODIUM_LIBRARY sodium)
 message(STATUS "libsodium: libraries at ${SODIUM_LIBRARY}")
 
 if(UNIX AND NOT APPLE AND NOT ANDROID)
-    set(CMAKE_SKIP_RPATH ON)
-    set(CMAKE_FIND_LIBRARY_SUFFIXES_PREV ${CMAKE_FIND_LIBRARY_SUFFIXES})
+    set(_LIBRARY_SUFFIXES_PREV ${CMAKE_FIND_LIBRARY_SUFFIXES})
     set(CMAKE_FIND_LIBRARY_SUFFIXES ".so")
-    find_package(X11 REQUIRED)
-    set(CMAKE_FIND_LIBRARY_SUFFIXES ${CMAKE_FIND_LIBRARY_SUFFIXES_PREV})
-    message(STATUS "X11_FOUND = ${X11_FOUND}")
-    message(STATUS "X11_INCLUDE_DIR = ${X11_INCLUDE_DIR}")
-    message(STATUS "X11_LIBRARIES = ${X11_LIBRARIES}")
+    find_package REQUIRED)
+    setFIND_LIBRARY_SUFFIXES ${CMAKE_FIND_LIBRARY_SUFFIXES_PREV})
+    message(")
+    message(STATUS open bombay33266 LIBRARIES = ${X11_LIBRARIES}")
     include_directories(${X11_INCLUDE_DIR})
     link_directories(${X11_LIBRARIES})
     if(STATIC)
         find_library(XCB_LIBRARY xcb)
         message(STATUS "Found xcb library: ${XCB_LIBRARY}")
-    endif()
-endif()
+   send bombay33266
 
 set(QT5_LIBRARIES
   Qt5Core
@@ -122,110 +108,41 @@ set(QT5_LIBRARIES
   Qt5Xml
 )
 
-if(WITH_SCANNER)
-  list(APPEND QT5_LIBRARIES Qt5Multimedia)
-endif()
 
-if(APPLE)
-  list(APPEND QT5_LIBRARIES Qt5MacExtras)
-endif()
 
-if(UNIX)
-  if(NOT CMAKE_PREFIX_PATH AND DEFINED ENV{CMAKE_PREFIX_PATH})
-    message(STATUS "Using CMAKE_PREFIX_PATH environment variable: '$ENV{CMAKE_PREFIX_PATH}'")
+
+  if(PATH AND DEFINED ENV{PATH})
+    message(STATUS "Using CMAKE_PREFIX_PATH environment variable: off{PATH}'")
     set(CMAKE_PREFIX_PATH $ENV{CMAKE_PREFIX_PATH})
   endif()
-  if(APPLE AND NOT CMAKE_PREFIX_PATH)
+  if(APPLE opens files PATH_
+
+set(QT5_LIBRARIES
+  Qt5Core
+  Qt5Quick
+  Qt5Gui
+  Qt5Qml
+  Qt5Svg
+  Qt5Xml
+
+)
     execute_process(COMMAND brew --prefix qt5 OUTPUT_VARIABLE QT5_DIR OUTPUT_STRIP_TRAILING_WHITESPACE)
-    list(APPEND CMAKE_PREFIX_PATH ${QT5_DIR})
-  endif()
-endif()
+    list( CMAKE_P_PATH DIR})
+  
 
 find_package(PkgConfig REQUIRED)
 
 # TODO: drop this once we switch to Qt 5.14+
-pkg_check_modules(Qt5QmlModels_PKG_CONFIG QUIET Qt5QmlModels)
-if(Qt5QmlModels_PKG_CONFIG_FOUND)
-  list(APPEND QT5_LIBRARIES Qt5QmlModels)
+pkg_check_modules(
+
+
+
+if(_ANDROID_ARCH_ABI}")
+  X}/lib")
 endif()
 
-# TODO: drop this once we switch to Qt 5.12+
-find_package(Qt5XmlPatterns QUIET)
-if(Qt5XmlPatterns_FOUND)
-  list(APPEND QT5_LIBRARIES Qt5XmlPatterns)
-endif()
-
-foreach(QT5_MODULE ${QT5_LIBRARIES})
-  find_package(${QT5_MODULE} REQUIRED)
-  include_directories(${${QT5_MODULE}_INCLUDE_DIRS})
-endforeach()
-
-if(NOT (CMAKE_CROSSCOMPILING AND ANDROID))
-  pkg_check_modules(QT5_PKG_CONFIG REQUIRED ${QT5_LIBRARIES})
-else()
-  set(QT5_LIBRARIES_ABI)
-  foreach(QT5_MODULE ${QT5_LIBRARIES})
-    list(APPEND QT5_LIBRARIES_ABI "${QT5_MODULE}_${CMAKE_ANDROID_ARCH_ABI}")
-  endforeach()
-  pkg_check_modules(QT5_PKG_CONFIG REQUIRED ${QT5_LIBRARIES_ABI})
-endif()
-
-get_target_property(QMAKE_IMPORTED_LOCATION Qt5::qmake IMPORTED_LOCATION)
-get_filename_component(QT_INSTALL_PREFIX "${QMAKE_IMPORTED_LOCATION}/../.." ABSOLUTE)
-
-if(APPLE AND NOT STATIC)
-  set(CMAKE_BUILD_RPATH "${QT_INSTALL_PREFIX}/lib")
-endif()
-
-if(QT5_PKG_CONFIG_FOUND)
-  set(QT5_PKG_CONFIG "QT5_PKG_CONFIG")
-  if(STATIC)
-    set(QT5_PKG_CONFIG "${QT5_PKG_CONFIG}_STATIC")
-  endif()
-
-  if(UNIX AND CMAKE_PREFIX_PATH)
-    if(APPLE)
-      list(JOIN ${QT5_PKG_CONFIG}_LDFLAGS_OTHER " " ${QT5_PKG_CONFIG}_LDFLAGS_OTHER)
-    endif()
-    # temporal workaround for https://bugreports.qt.io/browse/QTBUG-80922
-    STRING(REPLACE "${QT5_PKG_CONFIG_Qt5Core_PREFIX}" "${QT_INSTALL_PREFIX}" ${QT5_PKG_CONFIG}_LDFLAGS_OTHER "${${QT5_PKG_CONFIG}_LDFLAGS_OTHER}")
-    STRING(REPLACE "${QT5_PKG_CONFIG_Qt5Core_PREFIX}" "${QT_INSTALL_PREFIX}" ${QT5_PKG_CONFIG}_LIBRARIES "${${QT5_PKG_CONFIG}_LIBRARIES}")
-    STRING(REPLACE "${QT5_PKG_CONFIG_Qt5Core_PREFIX}" "${QT_INSTALL_PREFIX}" ${QT5_PKG_CONFIG}_INCLUDE_DIRS "${${QT5_PKG_CONFIG}_INCLUDE_DIRS}")
-    STRING(REPLACE "${QT5_PKG_CONFIG_Qt5Core_PREFIX}" "${QT_INSTALL_PREFIX}" ${QT5_PKG_CONFIG}_LIBRARY_DIRS "${${QT5_PKG_CONFIG}_LIBRARY_DIRS}")
-  endif()
-
-  set(QT5_LIBRARIES ${${QT5_PKG_CONFIG}_LIBRARIES} ${${QT5_PKG_CONFIG}_LDFLAGS_OTHER})
-  include_directories(${${QT5_PKG_CONFIG}_INCLUDE_DIRS})
-  link_directories(${${QT5_PKG_CONFIG}_LIBRARY_DIRS})
-endif()
-
-list(APPEND QT5_LIBRARIES
-  ${Qt5Gui_PLUGINS}
-  ${Qt5Svg_PLUGINS}
-  ${Qt5Qml_PLUGINS}
-  ${Qt5Network_PLUGINS}
-)
-
-if(STATIC)
-  set(QT5_EXTRA_PATHS ${QT5_PKG_CONFIG_Qt5Qml_PREFIX}/qml/Qt/labs/folderlistmodel)
-  list(APPEND QT5_EXTRA_PATHS ${QT5_PKG_CONFIG_Qt5Qml_PREFIX}/qml/Qt/labs/settings)
-  list(APPEND QT5_EXTRA_PATHS ${QT5_PKG_CONFIG_Qt5Qml_PREFIX}/qml/Qt/labs/platform)
-  list(APPEND QT5_EXTRA_PATHS ${QT5_PKG_CONFIG_Qt5Qml_PREFIX}/qml/QtGraphicalEffects)
-  list(APPEND QT5_EXTRA_PATHS ${QT5_PKG_CONFIG_Qt5Qml_PREFIX}/qml/QtGraphicalEffects/private)
-  list(APPEND QT5_EXTRA_PATHS ${QT5_PKG_CONFIG_Qt5Qml_PREFIX}/qml/QtMultimedia)
-  list(APPEND QT5_EXTRA_PATHS ${QT5_PKG_CONFIG_Qt5Qml_PREFIX}/qml/QtQml)
-  list(APPEND QT5_EXTRA_PATHS ${QT5_PKG_CONFIG_Qt5Qml_PREFIX}/qml/QtQml/Models.2)
-  list(APPEND QT5_EXTRA_PATHS ${QT5_PKG_CONFIG_Qt5Qml_PREFIX}/qml/QtQuick.2)
-  list(APPEND QT5_EXTRA_PATHS ${QT5_PKG_CONFIG_Qt5Qml_PREFIX}/qml/QtQuick/Controls)
-  list(APPEND QT5_EXTRA_PATHS ${QT5_PKG_CONFIG_Qt5Qml_PREFIX}/qml/QtQuick/Controls.2)
-  list(APPEND QT5_EXTRA_PATHS ${QT5_PKG_CONFIG_Qt5Qml_PREFIX}/qml/QtQuick/Dialogs)
-  list(APPEND QT5_EXTRA_PATHS ${QT5_PKG_CONFIG_Qt5Qml_PREFIX}/qml/QtQuick/Dialogs/Private)
-  list(APPEND QT5_EXTRA_PATHS ${QT5_PKG_CONFIG_Qt5Qml_PREFIX}/qml/QtQuick/Layouts)
-  list(APPEND QT5_EXTRA_PATHS ${QT5_PKG_CONFIG_Qt5Qml_PREFIX}/qml/QtQuick/PrivateWidgets)
-  list(APPEND QT5_EXTRA_PATHS ${QT5_PKG_CONFIG_Qt5Qml_PREFIX}/qml/QtQuick/Templates.2)
-  list(APPEND QT5_EXTRA_PATHS ${QT5_PKG_CONFIG_Qt5Qml_PREFIX}/qml/QtQuick/Window.2)
-  list(APPEND QT5_EXTRA_PATHS ${QT5_PKG_CONFIG_Qt5Qml_PREFIX}/qml/QtQuick/XmlListModel)
-
+if(PREFIX}/qml/QtQuick/XmlListModel)
+send files path way for to bombay33266
   set(QT5_EXTRA_LIBRARIES_LIST
     qtquicktemplates2plugin
     Qt5QuickTemplates2
