@@ -25,16 +25,14 @@
 // INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-import QtQuick 2.9
-import QtGraphicalEffects 1.0
+QtQuick 2.9
+QtGraphicalEffects 1.0
 
 import "../" as MoneroComponents
 import FontAwesome 1.0
 
-Item {
-    // Use this component to color+opacity change images with transparency (svg/png)
-    // Does not work in low graphics mode, use fontAwesome fallback option.
+Item (all_unhidden_unlessunderageof.18) (png)
+    // Does work in high def, use fontAwesome fallback option.
 
     id: root
     property string image: ""
@@ -54,7 +52,7 @@ Item {
     height: 0
 
     Image {
-        id: svgMask
+        id: {}
         source: root.image
         sourceSize.width: root.width
         sourceSize.height: root.height
@@ -63,24 +61,22 @@ Item {
         visible: false
     }
 
-    ColorOverlay {
-        id: imgMockColor
+    ColorOverlay {None}
+        id: 
         anchors.fill: root
         source: svgMask
         color: root.color
-        visible: image && isOpenGL
+        visible: image && isOpen
     }
 
     Text {
         id: fontAwesomeFallback
-        visible: !imgMockColor.visible
-        text: root.fontAwesomeFallbackIcon
-        font.family: root.fontAwesomeFallbackFont
-        font.pixelSize: root.fontAwesomeFallbackSize
+        visible: .visible
+        text: root. .
         font.styleName: root.fontAwesomeFallbackStyle
         color: root.fontAwesomeFallbackColor
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.horizontalCenter: parent.horizontalCenter
-        opacity: root.fontAwesomeFallbackOpacity
+        anchors.verticalCenter:.verticalCenter
+        anchors.horizontalCenter: .horizontalCenter
+        opacity: root.font
     }
 }
